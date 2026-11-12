@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand_primary">#54DBC5</color>
+    <color name="brand_on_primary">#00382F</color>
+    <color name="brand_primary_container">#005046</color>
+    <color name="brand_on_primary_container">#74F8E1</color>
+    <color name="brand_secondary">#B2CCC5</color>
+    <color name="brand_on_secondary">#1D352F</color>
+    <color name="brand_secondary_container">#334B45</color>
+    <color name="brand_on_secondary_container">#CEE9E2</color>
+    <color name="brand_tertiary">#A7CCDF</color>
+    <color name="brand_on_tertiary">#093544</color>
+
+    <color name="surface">#0E1513</color>
+    <color name="on_surface">#DDE4E1</color>
+    <color name="surface_variant">#3F4946</color>
+    <color name="on_surface_variant">#BEC9C5</color>
+    <color name="outline">#89938F</color>
+    <color name="outline_variant">#3F4946</color>
+    <color name="surface_container">#1A211F</color>
+    <color name="surface_container_high">#242B29</color>
+    <color name="surface_container_low">#161D1B</color>
+    <color name="surface_container_lowest">#0A100E</color>
+
+    <color name="error">#FFB4AB</color>
+    <color name="on_error">#690005</color>
+
+    <color name="status_ok">#7BD88F</color>
+    <color name="status_warn">#FFB95C</color>
+    <color name="status_error">#FFB4AB</color>
+    <color name="divider">#26DDE4E1</color>
+</resources>

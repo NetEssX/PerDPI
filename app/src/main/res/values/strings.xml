@@ -1,0 +1,108 @@
+<resources>
+    <string name="app_name">PerDPI</string>
+    <string name="app_subtitle">为每个应用单独设置 DPI</string>
+
+    <!-- Shizuku / service status -->
+    <string name="status_shizuku_missing_title">未检测到 Shizuku</string>
+    <string name="status_shizuku_missing_detail">PerDPI 需要借助 Shizuku 获得修改显示密度的权限。请先安装并启动 Shizuku。</string>
+    <string name="status_shizuku_not_running_title">Shizuku 未运行</string>
+    <string name="status_shizuku_not_running_detail">请打开 Shizuku，通过无线调试或 Root 启动服务后返回此页面。</string>
+    <string name="status_shizuku_old_title">Shizuku 版本过低</string>
+    <string name="status_shizuku_old_detail">请将 Shizuku 更新到 v11 或更高版本。</string>
+    <string name="status_permission_title">需要 Shizuku 授权</string>
+    <string name="status_permission_detail">点击“授权”，在 Shizuku 弹窗中允许 PerDPI 使用 Shell 权限。</string>
+    <string name="status_service_running_title">后台服务运行中</string>
+    <string name="status_service_running_detail">已连接 Shizuku。切换到已设置的应用时会自动应用 DPI，其它应用使用默认 DPI。</string>
+    <string name="status_ready_title">已连接 Shizuku</string>
+    <string name="status_ready_detail">授权已完成。启动后台服务后，即可按应用自动切换 DPI。</string>
+    <string name="status_current">当前：%1$s · %2$d dpi</string>
+    <string name="status_current_system">当前：%1$s · 系统默认</string>
+    <string name="status_current_waiting">等待切换到已设置的应用…</string>
+    <string name="status_checking">正在检查 Shizuku…</string>
+
+    <string name="btn_open_shizuku">打开 Shizuku</string>
+    <string name="btn_get_shizuku">获取 Shizuku</string>
+    <string name="btn_grant">授权</string>
+    <string name="btn_start_service">启动服务</string>
+    <string name="btn_stop_service">停止服务</string>
+    <string name="service_hint">提示：切换 DPI 会让目标应用重新创建界面，首次进入时可能闪烁一下。</string>
+
+    <!-- App list -->
+    <string name="search_hint">搜索应用名称或包名</string>
+    <string name="apps_header">应用列表</string>
+    <string name="apps_count">已设置 %1$d 个</string>
+    <string name="system_dpi_compact">默认 %1$d</string>
+    <string name="system_dpi_follow_short">默认 物理</string>
+    <string name="system_dpi_title">系统默认 DPI</string>
+    <string name="system_dpi_follow_chip">物理</string>
+    <string name="dpi_physical">物理</string>
+    <string name="dpi_following_physical">跟随物理 · %1$d dpi</string>
+    <string name="system_dpi_saved">系统默认已设为 %1$d dpi</string>
+    <string name="system_dpi_reset_toast">系统默认已恢复为物理密度</string>
+    <string name="dpi_default">系统默认</string>
+    <string name="dpi_value_short">%1$d dpi</string>
+    <string name="empty_apps">没有找到可启动的应用</string>
+    <string name="empty_search">没有匹配的应用</string>
+    <string name="loading_apps">正在读取应用列表…</string>
+    <string name="use_system_dpi">跟随系统</string>
+
+    <!-- DPI dialog -->
+    <string name="dialog_pick_dpi">选择显示密度</string>
+    <string name="dialog_dpi_help">DPI 越大，界面元素越小；DPI 越小，界面元素越大。</string>
+    <string name="dpi_following_system">跟随系统 · %1$d dpi</string>
+    <string name="dpi_ratio">相对系统 %1$s×</string>
+    <string name="dpi_base">系统基准 %1$d dpi</string>
+    <string name="dialog_note">仅在该应用位于前台时临时切换系统显示密度，离开后自动恢复。部分应用需要重新打开才能完全生效。</string>
+    <string name="dialog_save">保存</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_reset">恢复默认</string>
+    <string name="chip_system">系统默认</string>
+    <string name="dpi_360">360</string>
+    <string name="dpi_480">480</string>
+    <string name="dpi_560">560</string>
+    <string name="dpi_640">640</string>
+
+    <!-- Notifications -->
+    <string name="notif_channel_name">DPI 切换状态</string>
+    <string name="notif_channel_description">显示 PerDPI 后台服务与当前应用的 DPI 状态</string>
+    <string name="notif_title">PerDPI 正在运行</string>
+    <string name="notif_waiting">等待切换到已设置的应用</string>
+    <string name="notif_applying">正在为 %1$s 应用 %2$d dpi</string>
+    <string name="notif_stop">停止</string>
+    <string name="notif_shizuku_lost">Shizuku 连接已断开</string>
+    <string name="notif_preparing">正在读取系统显示密度…</string>
+    <string name="notif_error">服务异常：%1$s</string>
+
+    <!-- Menu / dialogs -->
+    <string name="menu_search">搜索应用</string>
+    <string name="menu_stop_service">停止后台服务</string>
+    <string name="menu_refresh">刷新应用列表</string>
+    <string name="menu_reset">恢复系统 DPI</string>
+    <string name="menu_system_dpi">系统默认 DPI</string>
+    <string name="menu_help">使用说明</string>
+    <string name="reset_title">恢复系统 DPI？</string>
+    <string name="reset_message">将先停止后台服务，然后执行系统默认的密度恢复。你为应用保存的 DPI 设置不会被删除。</string>
+    <string name="reset_confirm">恢复</string>
+    <string name="help_title">使用说明</string>
+    <string name="help_body">1. 安装并启动 Shizuku（可从应用内跳转下载）。\n\n2. 返回 PerDPI，允许 Shizuku 的 Shell 权限。授权后服务会自动启动，不需要再点“启动服务”。\n\n3. 未单独设置的应用会使用“系统默认 DPI”。在列表上方点“默认”即可修改；默认“物理”表示跟随屏幕原始密度。\n\n4. 在应用列表中点选一个应用，拖动滑块设置 DPI。\n\n5. 打开该应用，PerDPI 会在它位于前台时切换显示密度；切到其它应用后使用默认 DPI。\n\n注意：Android 没有公开的“单应用密度”接口。PerDPI 通过 Shizuku 执行 wm density，在应用切换时动态切换全局密度，因此切换瞬间系统界面也会一起缩放，目标应用可能会重建界面。\n\n如果系统界面异常，可在菜单中执行“恢复系统 DPI”，或在终端执行：adb shell wm density reset。\n\n打开 PerDPI 会自动启动服务；手动停止后不会自动启动。若应用被系统强制停止（部分手表的“最近任务划掉”就是强停），切换会暂停，重新打开 PerDPI 会自动恢复。Android 不允许被强停的应用自动复活，Shizuku 也无法绕过这一限制。Shizuku 在设备重启后通常需要重新启动。</string>
+    <string name="shizuku_missing_title">需要安装 Shizuku</string>
+    <string name="shizuku_missing_message">Shizuku 可以让普通应用在免 Root 的情况下获得 ADB Shell 权限。请从 Shizuku 官网或应用商店安装，并按提示启动服务。</string>
+    <string name="shizuku_open_failed">无法打开 Shizuku，请手动启动它。</string>
+    <string name="shizuku_download">打开下载页</string>
+    <string name="shizuku_url">https://shizuku.rikka.app/</string>
+
+    <!-- Toasts -->
+    <string name="toast_saved">已保存 %1$s 的 DPI</string>
+    <string name="toast_reset_app">已恢复 %1$s 的系统 DPI</string>
+    <string name="toast_granted">Shizuku 授权成功</string>
+    <string name="toast_denied">未获得 Shizuku 授权</string>
+    <string name="toast_service_started">后台服务已启动</string>
+    <string name="toast_service_stopped">后台服务已停止</string>
+    <string name="toast_service_failed">服务启动失败：%1$s</string>
+    <string name="toast_restored">已恢复系统默认 DPI</string>
+    <string name="toast_restore_failed">恢复失败，请确认 Shizuku 仍在运行</string>
+    <string name="toast_open_shizuku_first">请先启动并授权 Shizuku</string>
+    <string name="toast_notif_denied">未授予通知权限，服务仍会运行，但不会显示常驻通知</string>
+
+    <string name="notification_permission_rationale">Android 13 及以上版本需要通知权限来显示后台服务的常驻通知。</string>
+</resources>
