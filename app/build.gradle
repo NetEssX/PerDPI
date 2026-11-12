@@ -2,7 +2,59 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withInputStream { localProperties.load(it) }
+}
+def releaseStoreFile = localProperties.getProperty("release.storeFile")
+def releaseStorePassword = localProperties.getProperty("release.storePassword")
+def releaseKeyAlias = localProperties.getProperty("release.keyAlias")
+def releaseKeyPassword = localProperties.getProperty("release.keyPassword")
+def hasReleaseSigning = releaseStoreFile && releaseStorePassword && releaseKeyAlias && releaseKeyPassword
+
+// versionCode = yyMMdd + 2-digit build number of the day. Only release-like
+// builds consume a number; see publish/README.md in the shared publish repo.
+def versionFile = rootProject.file(".version.properties")
+def versionProps = new Properties()
+if (versionFile.exists()) {
+    versionFile.withInputStream { versionProps.load(it) }
+}
+def dailyKey = new Date().format("yyMMdd")
+def requestedTasks = gradle.startParameter.taskNames
+def isReleaseBuild = requestedTasks.any { taskName ->
+    def name = taskName.toLowerCase()
+    name == "build" || name == "assemble" || name == "bundle" ||
+            name.endsWith(":build") || name.endsWith(":assemble") || name.endsWith(":bundle") ||
+            name == "assembleRelease" || name.endsWith(":assembleRelease") ||
+            name == "bundleRelease" || name.endsWith(":bundleRelease") ||
+            name == "installRelease" || name.endsWith(":installRelease") ||
+            name == "packageRelease" || name.endsWith(":packageRelease")
+}
+def overrideVersionCode = findProperty("versionCode")
+def buildNumber = 1
+if (isReleaseBuild && overrideVersionCode == null) {
+    buildNumber = (versionProps.getProperty(dailyKey, "0") as int) + 1
+    versionProps.setProperty(dailyKey, String.format("%02d", buildNumber))
+    versionFile.withWriter { versionProps.store(it, null) }
+}
+def computedVersionCode = overrideVersionCode != null
+        ? overrideVersionCode.toInteger()
+        : (dailyKey + String.format("%02d", buildNumber)).toInteger()
+def displayVersionName = findProperty("versionName") ?: "1.0"
+
 android {
+    signingConfigs {
+        release {
+            if (hasReleaseSigning) {
+                storeFile rootProject.file(releaseStoreFile)
+                storePassword releaseStorePassword
+                keyAlias releaseKeyAlias
+                keyPassword releaseKeyPassword
+            }
+        }
+    }
+
     namespace 'com.netessx.perdpi'
     compileSdk {
         version = release(36) {
@@ -14,14 +66,17 @@ android {
         applicationId "com.netessx.perdpi"
         minSdk 26
         targetSdk 36
-        versionCode 1
-        versionName "1.0"
+        versionCode computedVersionCode
+        versionName displayVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
+            if (hasReleaseSigning) {
+                signingConfig signingConfigs.release
+            }
             optimization {
                 enable false
             }
