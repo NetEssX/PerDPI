@@ -26,10 +26,10 @@ def isReleaseBuild = requestedTasks.any { taskName ->
     def name = taskName.toLowerCase()
     name == "build" || name == "assemble" || name == "bundle" ||
             name.endsWith(":build") || name.endsWith(":assemble") || name.endsWith(":bundle") ||
-            name == "assembleRelease" || name.endsWith(":assembleRelease") ||
-            name == "bundleRelease" || name.endsWith(":bundleRelease") ||
-            name == "installRelease" || name.endsWith(":installRelease") ||
-            name == "packageRelease" || name.endsWith(":packageRelease")
+            name == "assemblerelease" || name.endsWith(":assemblerelease") ||
+            name == "bundlerelease" || name.endsWith(":bundlerelease") ||
+            name == "installrelease" || name.endsWith(":installrelease") ||
+            name == "packagerelease" || name.endsWith(":packagerelease")
 }
 def overrideVersionCode = findProperty("versionCode")
 def buildNumber = 1
@@ -41,7 +41,7 @@ if (isReleaseBuild && overrideVersionCode == null) {
 def computedVersionCode = overrideVersionCode != null
         ? overrideVersionCode.toInteger()
         : (dailyKey + String.format("%02d", buildNumber)).toInteger()
-def displayVersionName = findProperty("versionName") ?: "1.0"
+def displayVersionName = findProperty("versionName") ?: "v1.0.0"
 
 android {
     signingConfigs {
